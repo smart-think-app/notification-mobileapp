@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "460591389535",
+    "project_id": "parking-4292e",
+    "storage_bucket": "parking-4292e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460591389535:android:90ee53dca4dc0b0e4f74ea",
+        "android_client_info": {
+          "package_name": "com.example.notification_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460591389535-bnsflucifnapb7gcgiungm1ogrkolc2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD95cUHHoHhjFEmfRgskXR31nwJ3gUMmgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460591389535-bnsflucifnapb7gcgiungm1ogrkolc2c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460591389535-9da7eeumsoina1du7hd9ujhptgsl7jq8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.parking.parkingapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460591389535:android:31b1533fdb4d91b84f74ea",
+        "android_client_info": {
+          "package_name": "com.parking.parkingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460591389535-bnsflucifnapb7gcgiungm1ogrkolc2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD95cUHHoHhjFEmfRgskXR31nwJ3gUMmgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460591389535-bnsflucifnapb7gcgiungm1ogrkolc2c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460591389535-9da7eeumsoina1du7hd9ujhptgsl7jq8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.parking.parkingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
