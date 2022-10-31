@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:notification_app/firebase_options.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -50,9 +51,21 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class CreateDeviceRequest {
+  final String account_id;
+  final String? fcm_token;
+  final String device_id;
+
+  const CreateDeviceRequest(
+      {required this.account_id,
+      required this.fcm_token,
+      required this.device_id});
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  String notificationBody = 'body';
+  String notificationTitle = 'title';
   @override
   void initState() {
     print('init app notification');
@@ -66,8 +79,34 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     final fcmToken = await FirebaseMessaging.instance.getToken();
     print(fcmToken);
+    Map dataRequest = {
+      'account_id': 'huytest2',
+      'fcm_token': fcmToken,
+      'device_id': 'device-android'
+    };
+    await http.post(Uri.parse('http://192.168.10.25:3000/api/devices'), body: dataRequest);
+    _handleMessage();
   }
 
+  void _handleMessage() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Got a message whilst in the foreground!');
+      print('Message data: ${message.data}');
+      print('Message notification: ${message.notification}');
+      _incrementCounter();
+      _changeNotification(message.data['title'], message.data['body']);
+      if (message.notification != null) {
+        print('Message also contained a notification: ${message.notification}');
+      }
+    });
+  }
+
+  void _changeNotification(String title ,String body) {
+    setState(() {
+      notificationTitle = title;
+      notificationBody = body;
+    });
+  }
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -113,8 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              notificationTitle,
+            ),
+            Text(
+              notificationBody,
             ),
             Text(
               '$_counter',
